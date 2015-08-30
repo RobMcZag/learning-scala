@@ -6,8 +6,8 @@ object Rationals {
 	r.num                                     //> res0: Int#1097 = 1
 	r.denum                                   //> res1: Int#1097 = 2
 
-	r.gcd(1, -2)                              //> res2: Int#1097 = 1
-	r.neg                                     //> res3: week2#31.Rational#143102 = -1/2
+	//r.gcd(1, -2)
+	r.neg                                     //> res2: week2#31.Rational#143102 = -1/2
 	
 	
 	val s = new Rational(5, 3)                //> s  : week2#31.Rational#143102 = 5/3
@@ -23,7 +23,7 @@ class Rational(nump: Int, denump: Int) {
 	def num = s * math.abs(nump / d)
 	def denum = math.abs(denump / d)
 	
-	def gcd(a: Int, b: Int): Int = {
+	private def gcd(a: Int, b: Int): Int = {
 		if (b == 0) a else gcd(b, a % b)
 	}
 
