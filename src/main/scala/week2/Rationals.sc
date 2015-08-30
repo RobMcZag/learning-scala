@@ -18,10 +18,10 @@ object Rationals {
 
 
 class Rational(nump: Int, denump: Int) {
-	val d = gcd(nump, denump)
-	val s = {if (nump * denump < 0) -1 else 1}
-	def num = s * math.abs(nump / d)
-	def denum = math.abs(denump / d)
+	private val d = gcd(nump, denump)
+	private val s = {if (nump * denump < 0) -1 else 1}
+	val num = s * math.abs(nump / d)
+	val denum = math.abs(denump / d)
 	
 	private def gcd(a: Int, b: Int): Int = {
 		if (b == 0) a else gcd(b, a % b)
