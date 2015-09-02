@@ -3,22 +3,23 @@ package week3
 
 object intsets {
   
-  val e = new EmptyZet()                          //> e  : week3.EmptyZet = .
+  val e = EmptyZet                                //> e  : week3.EmptyZet.type = .
   
-  val t1 = new NonEmptyZet( 7, new EmptyZet, new EmptyZet )
+  val t1 = new NonEmptyZet( 7, EmptyZet, EmptyZet )
                                                   //> t1  : week3.NonEmptyZet = [.7.]
   
-  t1.incl(5).incl(11).incl(3).incl(6)             //> res0: week3.IntSet = [[[.3.]5[.6.]]7[.11.]]
+  t1.incl(6).incl(11).incl(3).incl(5)             //> res0: week3.IntSet = [[[.3[.5.]]6.]7[.11.]]
   
 }
 
 abstract class IntSet {
 	def incl(x: Int): IntSet
 	def contains(x: Int): Boolean
+	override def toString: String
 }
 
-class EmptyZet extends IntSet {
-	def incl(x: Int): IntSet = new NonEmptyZet(x, new EmptyZet, new EmptyZet)
+object EmptyZet extends IntSet {
+	def incl(x: Int): IntSet = new NonEmptyZet(x, EmptyZet, EmptyZet)
 	def contains(x: Int): Boolean = false
 	override def toString = "."
 }
